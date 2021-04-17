@@ -100,7 +100,7 @@ def set_relation_description_obj(relation):
     relation_description_word_list = relation_text_process(relation_description_list)
 
     for i in range(len(relation_name)):
-        rel2vector = np.random.uniform(-0.5, 0.5, 50)
+        rel2vector = np.random.uniform(-0.5, 0.5, 100)
         rel = Rela(_id=i, _name=relation_name[i], _mention=None, _neighbours=None, _rel2vec=rel2vector,
                    _rel_des_word_list=relation_description_word_list[i])
         rel_obj_set.append(rel)
@@ -128,7 +128,7 @@ def set_entity_description_obj(entity_des):
         else:
             neighbours = neighbours_data
 
-        id2vector = np.random.uniform(-0.5, 0.5, 50)
+        id2vector = np.random.uniform(-0.5, 0.5, 100)
 
         en_des = str(symbol) + '$' + str(name) + '$' + str(mention) + '$' + str(neighbours)
         entity_des_word_list = entity_text_process(en_des)  # get entity des 's word list
@@ -368,8 +368,8 @@ def obtain_dif_dim_vector(entity_description_obj, all_entity_description_list, r
             #
             relation_des_embedding = np.array(relation_description_embedding)
 
-            np.savetxt('./FB15K/new_init_entity_embedding_id50_des0.txt', entity_des_embedding, fmt='%.5f', delimiter=',')
-            np.savetxt('./FB15K/new_init_relation_embedding_id50_des0.txt', relation_des_embedding, fmt='%.5f',
+            np.savetxt('./FB15K/new_init_entity_embedding_id100_des0.txt', entity_des_embedding, fmt='%.5f', delimiter=',')
+            np.savetxt('./FB15K/new_init_relation_embedding_id100_des0.txt', relation_des_embedding, fmt='%.5f',
                        delimiter=',')
 
         else:
@@ -404,9 +404,9 @@ def obtain_dif_dim_vector(entity_description_obj, all_entity_description_list, r
             print(x_en_id_des_em.shape)
             print(x_rel_id_des_em.shape)
 
-            np.savetxt('./FB15K/new_init_entity_embedding_id50_des' + str(d) + '.txt', x_en_id_des_em, fmt='%.5f',
+            np.savetxt('./FB15K/new_init_entity_embedding_id100_des' + str(d) + '.txt', x_en_id_des_em, fmt='%.5f',
                        delimiter=',')
-            np.savetxt('./FB15K/new_init_relation_embedding_id50_des' + str(d) + '.txt', x_rel_id_des_em, fmt='%.5f',
+            np.savetxt('./FB15K/new_init_relation_embedding_id100_des' + str(d) + '.txt', x_rel_id_des_em, fmt='%.5f',
                        delimiter=',')
             print("d: %d over" % d)
 
